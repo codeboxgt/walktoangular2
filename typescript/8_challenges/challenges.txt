@@ -1,0 +1,56 @@
+Ejercicios
+
+Con el fin de poner en practica lo aprendido durante el modulo de TypeScript, 
+se presentan a continuacion una serie de ejercicios
+
+//Uso de let y const
+
+var name = “Luis von Ahn”;
+var age = 38;
+
+const ILUSTRES = {
+	name: name,
+age: age
+};
+
+//Uso de Interface
+Cree una interfaz que brinde una manera de validar el siguiente objeto y cualquier otro objeto con la misma estructura.
+
+var ilustre = {
+	name: “Mirciny Moliviatis”,
+	age: 40,
+	sex: “Female”,
+	awards: [
+“Guatemalteca Ilustre 2013 Seguros Universales”,
+“Medalla Oro Festival Gastronomico Santa Cruz Bolivia”,
+“Tenedor de Oro por la Camara de Industria guatemalteca” ]
+nickname: “”
+}
+
+// Funciones
+Convertir la siguiente funcion en funcion arrow
+
+function powResult(num, potencia) {
+	return Math.pow(num, potencia)
+}
+
+// Clases
+Tomando como base el ejemplo de Progresiones, debera escribir una clase llamada FibonacciProgression 
+la cual debera mostrar la serie numerica Fibonacci, la cual puede recibir como parametros el valor 
+inicial y el valor maximo que no debe sobrepasar la serie. La serie Fibonacci consiste en obtener el 
+siguiente valor por medio de la suma del valor actual y el valor anterior por ejemplo
+
+1 1 2 3 5 8 13 21 34 . . . .
+
+A su vez debera dividir las clases Progression, ArithProgression, GeomProgression y FibonacciProgression 
+en clases independientes, las cuales seran llamadas desde el archivo app.ts, el archivo app.ts 
+contendra la clase Tester que imprimira los valores para cada una de las series numericas invocada, 
+dentro de esta clase se debe crear el codigo necesario para imprimir la serie Fibonacci.
+
+Actualmente la impresion de las series se hace de manera vertical:
+1
+2
+3...
+
+debe crear una funcion que permita la impresion de la serie numerica de forma horizonal:
+1 2 3 ...
