@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HistoricalCharacter } from './classes/historicalCharacter';
+import { CharacterService } from './services/character.service'
 
 @Component({
+  moduleId: module.id,
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  templateUrl: './templates/app.component.html'
+
 })
-export class AppComponent  { name = 'Angular'; }
+export class AppComponent { }

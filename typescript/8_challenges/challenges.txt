@@ -1,6 +1,7 @@
 Ejercicios
 
-Con el fin de poner en practica lo aprendido durante el modulo de TypeScript, 
+Con el fin de poner en practica lo aprendido durante 
+el modulo de TypeScript, 
 se presentan a continuacion una serie de ejercicios
 
 //Uso de let y const
@@ -14,7 +15,9 @@ age: age
 };
 
 //Uso de Interface
-Cree una interfaz que brinde una manera de validar el siguiente objeto y cualquier otro objeto con la misma estructura.
+Cree una interfaz que brinde una manera de validar 
+el siguiente objeto y cualquier otro objeto con la 
+misma estructura.
 
 var ilustre = {
 	name: “Mirciny Moliviatis”,

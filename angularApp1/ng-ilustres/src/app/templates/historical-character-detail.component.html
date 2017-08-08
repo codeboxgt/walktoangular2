@@ -1,0 +1,12 @@
+
+<div class="container">
+    <div *ngIf="character">
+            <h2>Conoce m&aacute;s sobre {{character.name}}</h2>
+
+            <blockquote cite="">
+                {{character.bio}}
+            </blockquote>
+
+            <button (click)="gotoDetail()"> Ver detalle </button>
+        </div>
+</div>

@@ -1,0 +1,14 @@
+<h3>Top 5 Personajes Historicos</h3>
+
+
+<div class="container">
+    <div class="grid grid-pad">
+        <a *ngFor="let character of characters"
+            [routerLink]="['detail', character.id]"
+            class="col-1-4">
+            <div class="module character">
+                <h4>{{character.name}}</h4>
+            </div>
+        </a>
+    </div>
+</div>
