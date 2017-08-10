@@ -20,7 +20,13 @@ export class HistoricalCharactersComponent implements OnInit {
         this.selectedCharacter = character;
     }
 
+    // getHistoricalCharacters():void {
+    //     this.service.getHistoricalCharacters()
+    //         .subscribe(data=> this.characters = data);
+    // }
+
     ngOnInit() {
+        //this.getHistoricalCharacters();
         this.service.getHistoricalCharacters()
             .then( response => {
                 this.characters = response

@@ -29,7 +29,8 @@ export class CharacterDetailComponent implements OnInit {
 
     ngOnInit() {
         this.route.params
-            .switchMap((params:Params) => this.characterService.getHistoricalCharacter(+params['id']))
+            .switchMap((params:Params) => 
+            this.characterService.getHistoricalCharacter(+params['idCharacter']))
             .subscribe(character => {
                 this.character = character
             })

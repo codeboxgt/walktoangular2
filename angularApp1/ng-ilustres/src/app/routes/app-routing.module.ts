@@ -12,7 +12,7 @@ const routes: Routes = [
         component: DashboardComponent
     },
     {
-        path: 'detail/:id',
+        path: 'detail/:idCharacter',
         component: CharacterDetailComponent
     },
     {
