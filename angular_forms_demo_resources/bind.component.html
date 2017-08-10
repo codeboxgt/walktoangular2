@@ -1,0 +1,84 @@
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>Binding Form Elements</h1>
+    
+    <form>
+      <legend>Evento Click</legend>
+    
+      <div class="form-group">
+        <label for="box">Ingreso de valores</label>
+        <input type="text" class="form-control" #box
+               name="box" placeholder="Input field">
+      </div>
+    
+      <button class="btn btn-primary" (click)="showValue(box.value, $event)">Haz Click!</button>
+      <br/> <br/>
+      <pre>
+        {{showMessage}}
+      </pre>
+    </form>
+
+    
+    <form>
+
+      <legend>Key Events</legend>
+    
+      <div class="form-group">
+        <label for="keyValue">Key Up Event</label>
+        <input type="text" class="form-control" #keyUp
+               placeholder="Key Up Event" 
+               (keyup)="onKeyUp(keyUp.value, $event)">
+      </div>
+      <pre>
+        {{onKeyUpMessage}}
+      </pre>
+
+      <div class="form-group">
+        <label for="keyValue">Key Enter Event</label>
+        <input type="text" class="form-control" #keyEnter
+               placeholder="Key Enter Event" 
+               (keyup.enter)="onKeyEnter(keyEnter.value, $event)">
+      </div>
+      <pre>
+        {{onKeyEnterMessage}}
+      </pre>
+
+      <div class="form-group">
+        <label for="keyValue">on Blur Event</label>
+        <input type="text" class="form-control" #blurEvent
+               placeholder="on Blur Event" 
+               (blur)="onBlur(blurEvent.value, $event)">
+      </div>
+      <pre>
+        {{onBlurMessage}}
+      </pre>
+
+      <div class="form-group">
+        <label for="keyValue">Todo List</label>
+        <input type="text" class="form-control" #todoItem
+               placeholder="Todo Item" 
+               (keyup.enter) = "addTodo(todoItem.value,$event)"
+               (blur)="addTodo(todoItem.value,$event)">
+      </div>
+      
+      <button type="button" class="btn btn-success" 
+              (click)="addTodo(todoItem.value,$event)">
+              button
+      </button>
+      <br><br>
+      <!--<pre>-->
+        <legend>Listado de Pendientes</legend>
+        <ul>
+          <li *ngFor="let item of listItems">
+            {{item}}
+          </li>
+        </ul>
+        
+      <!--</pre>-->
+
+    </form>
+    
+    
+  </div>
+</div>
