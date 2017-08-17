@@ -1,6 +1,6 @@
-<div class="container">
-    <div *ngIf="character">
-            <h1> Hola mi nombre es {{character.name}} </h1><br>
-            <button (click)="gotoDetail()"> Ver detalle </button>
-        </div>
+<div *ngIf="character">
+    <h2>
+        {{character.name | uppercase}}
+    </h2>
+    <button (click)="gotoDetail()">Ver Detalle</button>
 </div>

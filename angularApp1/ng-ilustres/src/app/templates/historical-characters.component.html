@@ -1,15 +1,14 @@
-
 <div class="container">
-    <h1>{{title}}</h1>
+    <h2>Mis Personajes Historicos</h2>
+  
+  <character-preview [character]="selectedCharacter"></character-preview>
 
-    <character-preview [character]="selectedCharacter"></character-preview>
-
-    <ul class="characters">
-      <li *ngFor="let character of characters"
-          [class.selected]="character === selectedCharacter"
-          (click)="onSelect(character)">
+  <ul class="characters">
+    <li *ngFor="let character of characters"
+        [class.selected]="character === selectedCharacter"
+        (click)="onSelect(character)"
+        >
         <span class="badge">{{character.id}}</span> {{character.name}}
-      </li>
-    </ul>
+    </li>
+  </ul>
 </div>
-

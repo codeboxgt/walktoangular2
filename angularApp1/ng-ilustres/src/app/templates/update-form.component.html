@@ -1,0 +1,55 @@
+<block-ui>
+    <div class="container">
+        <h1>Actualizar Personaje Historico</h1>
+        <br>
+
+        <form [formGroup]="updateForm"
+            (ngSubmit)="updateCharacter(updateForm.value)" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="avatar">Fotograf&iacute;a</label>
+                        <input type="file" 
+                            (change)="onChange($event)">
+                    </div>
+                </div>
+                <div class="col-md-4" >
+                    <img src="{{updateForm.controls['avatar'].value}}" class="img-responsive img-thumbnail">                
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control"
+                    placeholder="Nombre Personaje Historico"
+                    [formControl]="updateForm.controls['name']">
+
+                <div class="alert alert-danger"
+                    *ngIf="updateForm.controls['name'].invalid && updateForm.controls['name'].touched">
+                    <small *ngIf="updateForm.controls['name'].hasError('required')">
+                        El Nombre del Personaje es Requerido
+                    </small>
+                    <small *ngIf="updateForm.controls['name'].hasError('minlength')">
+                        La longitud minima es de 2 caracters
+                    </small>
+                </div>
+                
+            </div>
+
+
+            <div class="form-group">
+                <label>Nombre</label>
+                <textarea type="text" class="form-control" rows="5" cols="10"
+                    placeholder="Biografia Personaje Historico"
+                    [formControl]="updateForm.controls['bio']">
+                </textarea>
+            </div>
+        
+            <button type="submit" class="btn btn-primary"
+                    [disabled]="!updateForm.valid">
+            Actualizar Personaje</button>
+        </form>
+
+    </div>
+
+</block-ui>

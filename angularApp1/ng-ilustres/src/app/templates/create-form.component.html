@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Agregar Personaje Historico</h1>
+    <br>
+
+    <form role="form" #historialCharacterForm="ngForm" (ngSubmit)="onSave()" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="avatar">Fotograf&iacute;a</label>
+                    <input type="file" ng2FileSelect [uploader]="uploader"
+                        (change)="onChange($event)">
+                </div>
+            </div>
+            <div class="col-md-4" >
+                <img src="{{newHC.avatar}}" class="img-responsive img-thumbnail">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="name" 
+                   placeholder="Nombre" name="name" #name="ngModel"
+                   [(ngModel)] ="newHC.name" #spy required>
+        </div>
+        <div [hidden]="name.valid || name.pristine || name.untouched"
+             class="alert alert-danger">
+             El Nombre del Personaje es Requerido!!
+        </div>
+
+        <div class="form-group">
+            <label for="bio">Biografia</label>
+            <textarea rows="10" cols="5" class="form-control" 
+                      id="bio" name="bio" placeholder="Biografia"
+                      [(ngModel)]="newHC.bio"></textarea>
+        </div>
+    
+        <button type="submit" class="btn btn-primary"
+                [disabled]="!historialCharacterForm.form.valid">
+        Agregar Personaje</button>
+    </form>
+
+    <!--<pre>
+        {{newHC.name}} <br>
+        {{newHC.bio}} <br>
+        {{spy.className}}
+    </pre>-->
+    
+</div>

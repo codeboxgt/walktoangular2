@@ -1,0 +1,21 @@
+
+<div class="container">
+    <div *ngIf="character">
+        <h2>conoce m&aacute;s sobre {{character.name}}:</h2>
+        <blockquote >{{character.bio}}</blockquote >
+        
+        <button type="button"                 
+                (click)="updateCharacter()">
+            Actualizar
+        </button>
+        
+        <!--<div><label>id: </label>{{character.id}}</div>
+        <div>
+            <label>name: </label>
+            <input [(ngModel)]="character.name" placeholder="name"/>        
+        </div>-->
+
+        <button (click)="goBack()">Regresar</button>
+    </div>
+</div>
+

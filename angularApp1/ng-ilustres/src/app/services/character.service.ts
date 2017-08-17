@@ -1,55 +1,77 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Injectable} from '@angular/core'
 
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+
 import 'rxjs/add/operator/map';
 
-import { CHARACTERS } from '../mocks/mock-character'
-
-import { HistoricalCharacter } from '../classes/historicalCharacter'
+import {HistoricalCharacter} from '../classes/historicalCharacter';
+import {CHARACTERS} from './mock-characters'
 
 @Injectable()
 export class CharacterService {
-    private basePath = 'http://localhost:3008';
+    private charactersUrl = 'http://localhost:3008';
+    private headers = new Headers({'Content-Type': 'application/json'});
+    
+    constructor (private http: Http) {}
 
-    constructor(private http:Http){}
+    // getHistoricalCharacters(): Promise<HistoricalCharacter[]> {
+    //     let url = `${this.charactersUrl}/characters`;
+    //     return this.http.get(url)
+    //                .toPromise()
+    //                .then(response=>response.json().data as HistoricalCharacter[])
+    //                .catch(this.handleError);
+    // }
+
+    getHistoricalCharacters() {
+        let url = `${this.charactersUrl}/characters`;
+        return this.http.get(url)
+                   .map(response => {
+                        return response.json().data;
+                   })
+    }
 
     private handleError(error:any):Promise<any> {
-        console.error("Ha ocurrido un erro: ")
+        console.error(`Ha ocurrido un error:`);
         console.log(error);
         return Promise.reject(error.message || error);
     }
-    
-    // getHistoricalCharacters() {
-    //     let url = `${this.basePath}/characters`;
-    //     return this.http.get(url)
-    //                .map(response => {
-    //                    return response.json().data;
-    //                })
-    // }
 
-    getHistoricalCharacters():Promise<HistoricalCharacter[]> {
-        let url = `${this.basePath}/characters`;
+    getHistoricalCharacter(id:number):Promise<HistoricalCharacter>{
+        let url = `${this.charactersUrl}/character/${id}`;
 
         return this.http.get(url)
                    .toPromise()
-                   .then(response => response.json().data as HistoricalCharacter[])
+                   .then(response=>response.json().data as HistoricalCharacter)
                    .catch(this.handleError);
     }
-    /*getHistoricalCharacters(): Promise<HistoricalCharacter[]> {
-        return Promise.resolve(CHARACTERS);
-    }*/
 
-    getHistoricalCharacter(id:number):Promise<HistoricalCharacter> {
-        return this.getHistoricalCharacters()
-                   .then(characters=>characters.find(character=>character.id === id));
+    postHistoricalCharacter(hc:HistoricalCharacter):Promise<HistoricalCharacter> {
+        let url = `${this.charactersUrl}/character`;
+        return this.http.post(url, hc, {headers: this.headers})
+                   .toPromise()
+                   .then(response => response.json().data as HistoricalCharacter)
+                   .catch(this.handleError)
     }
 
-    getSlowlyCharacter(): Promise<HistoricalCharacter[]> {
-        return new Promise(resolve => {
-            setTimeout(() => resolve(this.getHistoricalCharacters()), 3000);
-        })
+    putHistoricalCharacter(hc:HistoricalCharacter):Promise<HistoricalCharacter> {
+        let url = `${this.charactersUrl}/update/character/${hc.id}`;
+        return this.http.put(url, hc, {headers: this.headers})
+                        .toPromise()
+                        .then(response => response.json().data as HistoricalCharacter)
+                        .catch(this.handleError);
     }
-    
 
+    uploadAvatar(fileToUpload:Array<File>){
+        console.log(fileToUpload);
+        let result:any;
+        const formData: any = new FormData();
+        const files:Array<File> = fileToUpload;
+        formData.append("file[]", files[0], files[0]['name']);
+        let url = `${this.charactersUrl}/character/upload/avatar`;
+        return this.http.post(url, formData)
+                        .map(response => {
+                            return response.json();
+                        })
+    }
 }
