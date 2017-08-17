@@ -1,0 +1,48 @@
+<div class="animated fadeIn fast">
+  <div class="jumbotron">
+  <div class="container">
+    <h1>Listado de Heroes</h1>
+    <p>Aplicacion creada con Firebase</p>
+    
+    <a [routerLink]="[ '/create']"
+        class="btn btn-lg btn-primary" 
+        href="#" 
+        role="button"
+        >
+        Agregar Personaje
+    </a>
+    
+  </div>
+</div>
+<hr>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Super Poder</th>
+      <th>Casa Matriz</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let key of heroesList | keys, let i = index">
+      <td>1</td>
+      <td>Wolverine</td>
+      <td>Regeneracion</td>
+      <td>Marvel</td>
+      <td>
+        
+        <button [routerLink]="[ '/detail', Wolverine, 1 ]"
+                type="button" 
+                class="btn btn-info">Ver mas</button>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+

@@ -1,0 +1,72 @@
+<div class="animated fadeIn fast">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Crear nuevo Heroe</h3>
+    </div>
+    <div class="panel-body">
+      
+      <form #heroeCreateForm="ngForm" (ngSubmit)="saveHero(heroeCreateForm.value)">
+      
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" 
+                 name="nombre"                 
+                 class="form-control" 
+                 placeholder="Nombre del Heroe"
+                 ngModel #nombre="ngModel" required>
+          
+          <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" 
+              class="alert alert-danger">
+              <small *ngIf="nombre.errors.required">
+                <strong>El nombre</strong> del Heroe es requerido.
+              </small>
+            
+          </div>
+          
+        </div>
+
+        <div class="form-group">
+          <label for="superPoder">Super Poder</label>
+          <input type="text" 
+                 name="superPoder"                 
+                 class="form-control" 
+                 placeholder="Super Poder del Heroe"
+                 ngModel #superPoder="ngModel" required>
+          
+          <div *ngIf="superPoder.invalid && (superPoder.dirty || superPoder.touched)" 
+              class="alert alert-danger">
+              <small *ngIf="superPoder.errors.required">
+                <strong>El Super Poder</strong> del Heroe es requerido.
+              </small>
+            
+          </div>
+          
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Biograf&iacute;a</label>
+          <textarea rows="5" cols="5"class="form-control" 
+                 placeholder="Biografia del Heroe" name="bio"
+                 ngModel #bio="ngModel"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="casaMatriz">Casa Matriz</label>
+          <select class="form-control" name="casaMatriz" ngModel #house="ngModel">
+            <option value="Marvel">Marvel</option>
+            <option value="DC">DC</option>
+          </select>
+        </div>
+        
+        <button type="submit" 
+                class="btn btn-primary"
+                [disabled]="!heroeCreateForm.form.valid">
+                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                Guardar Personaje
+        </button>
+      </form>
+      
+    </div>
+</div>
+</div>
+
